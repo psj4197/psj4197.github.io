@@ -132,6 +132,64 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-14T14:23:52.000Z">2019-12-14</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 250 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/12/14/spqjswo/">TIL 191214</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="세미나-갔다옴"><a href="#세미나-갔다옴" class="headerlink" title="-세미나 갔다옴"></a>-세미나 갔다옴</h2><h5 id="내용은-추후에-정리해서-업로드"><a href="#내용은-추후에-정리해서-업로드" class="headerlink" title="내용은 추후에 정리해서 업로드"></a>내용은 추후에 정리해서 업로드</h5><h2 id="TIL"><a href="#TIL" class="headerlink" title="-TIL"></a>-TIL</h2><ul>
+    <li>pandas전처리 연습</li>
+
+</ul>
+
+<h1 id="고생했던-부분"><a href="#고생했던-부분" class="headerlink" title="고생했던 부분"></a>고생했던 부분</h1><h3 id="for-문-안에는-elif-가-아니라-if로-한다"><a href="#for-문-안에는-elif-가-아니라-if로-한다" class="headerlink" title="for 문 안에는 elif 가 아니라 if로 한다"></a>for 문 안에는 elif 가 아니라 if로 한다</h3><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">find_invalid</span><span class="hljs-params">(x)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="hljs-keyword">if</span> x[<span class="hljs-string">'Status'</span>]!=<span class="hljs-string">'completed'</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">   </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    li=[<span class="hljs-string">'Age(clean)'</span>,<span class="hljs-string">'Height(clean)'</span>,<span class="hljs-string">'Lowest Weight'</span>,<span class="hljs-string">'Target Weight'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="hljs-keyword">for</span> col <span class="hljs-keyword">in</span> li:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        <span class="hljs-keyword">if</span> pd.isnull(x[col]):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">            retrun <span class="hljs-literal">True</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="hljs-keyword">elif</span> (x[<span class="hljs-string">'Height(clean)'</span>]&lt;<span class="hljs-number">140</span>) | (x[<span class="hljs-string">'Height(clean)'</span>]&gt;<span class="hljs-number">200</span>):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span></span></pre></td></tr></table></figure>
+
+<h3 id="transform-다시공부"><a href="#transform-다시공부" class="headerlink" title="transform 다시공부"></a>transform 다시공부</h3><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">find.groupby(<span class="hljs-string">'Status'</span>)[<span class="hljs-string">'Age(clean)'</span>].transform(np.sum)</span></pre></td></tr></table></figure>
+
+<h3 id="sum-axis-1-amp-sum-axis-0"><a href="#sum-axis-1-amp-sum-axis-0" class="headerlink" title="sum(axis=1) &amp; sum(axis=0)"></a>sum(axis=1) &amp; sum(axis=0)</h3><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">pivot2[<span class="hljs-string">'합계'</span>]=pivot2[[pivot2.columns[<span class="hljs-number">0</span>:<span class="hljs-number">3</span>]].sum(axis=<span class="hljs-number">1</span>)</span></pre></td></tr></table></figure>
+
+<h3 id="isna-isnull-notnull"><a href="#isna-isnull-notnull" class="headerlink" title="isna(),isnull(),notnull()"></a>isna(),isnull(),notnull()</h3><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">series.isna().sum()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">df_new=df[df[col].notnull()]</span></pre></td></tr></table></figure>
+<h3 id="len-count-sum-의-차이"><a href="#len-count-sum-의-차이" class="headerlink" title="len,count,sum 의 차이"></a>len,count,sum 의 차이</h3><h3 id="value-counts-로-안나오는-nan값-있으니-unique-도-해봐야한다"><a href="#value-counts-로-안나오는-nan값-있으니-unique-도-해봐야한다" class="headerlink" title="value_counts 로 안나오는 nan값 있으니 , unique()도 해봐야한다"></a>value_counts 로 안나오는 nan값 있으니 , unique()도 해봐야한다</h3><h3 id="copy하면-float-타입에서-object-타입으로-바뀐다"><a href="#copy하면-float-타입에서-object-타입으로-바뀐다" class="headerlink" title="copy하면 float 타입에서 object 타입으로 바뀐다"></a>copy하면 float 타입에서 object 타입으로 바뀐다</h3><h3 id="pie-그래프-복습"><a href="#pie-그래프-복습" class="headerlink" title="pie 그래프 복습"></a>pie 그래프 복습</h3><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="hljs-number">10</span>,<span class="hljs-number">7</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">plt.pie(pivot1[<span class="hljs-string">'percent'</span>],labels=pivot1.index,autopct=<span class="hljs-string">'%.2f%%'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">plt.legend(loc=<span class="hljs-string">'lower left'</span>,bbox_to_anchor=(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">plt.box(<span class="hljs-literal">True</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">plt.show()</span></pre></td></tr></table></figure>
+<h3 id="index-순서-변경"><a href="#index-순서-변경" class="headerlink" title="index 순서 변경"></a>index 순서 변경</h3><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">find[<span class="hljs-string">'Purchased_dayname'</span>]=find[<span class="hljs-string">'Purchased AT'</span>].dt.weekday_name</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">day_order=[<span class="hljs-string">'Monday'</span>,<span class="hljs-string">'Tuesday'</span>,<span class="hljs-string">'Wednesday'</span>,<span class="hljs-string">'Thursday'</span>,<span class="hljs-string">'Friday'</span>,<span class="hljs-string">'Saturday'</span>,<span class="hljs-string">'Sunday'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">pv=pv_day.reindex(day_order)</span></pre></td></tr></table></figure>
+<h1 id="숙제"><a href="#숙제" class="headerlink" title="숙제"></a>숙제</h1><ul>
+    <li>p-value 공부, f1-score공부</li>
+    <li>세미나 내용정리,노션정리</li>
+</ul>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-12-11T11:40:46.000Z">2019-12-11</time>
                 
                 
@@ -147,7 +205,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/12/11/hh/">TIL 191211</a>
+                <a class="has-link-black-ter" href="/2019/12/11/191211/">TIL 191211</a>
             
         </h1>
         <div class="content">
@@ -378,7 +436,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            4
+                            5
                         </p>
                     </a>
                 </div>
@@ -523,7 +581,26 @@
         
         <article class="media">
             
-            <a href="/2019/12/11/hh/" class="media-left">
+            <a href="/2019/12/14/spqjswo/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="TIL 191214">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T14:23:52.000Z">2019-12-14</time></div>
+                    <a href="/2019/12/14/spqjswo/" class="title has-link-black-ter is-size-6 has-text-weight-normal">TIL 191214</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/11/191211/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="TIL 191211">
                 </p>
@@ -532,7 +609,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T11:40:46.000Z">2019-12-11</time></div>
-                    <a href="/2019/12/11/hh/" class="title has-link-black-ter is-size-6 has-text-weight-normal">TIL 191211</a>
+                    <a href="/2019/12/11/191211/" class="title has-link-black-ter is-size-6 has-text-weight-normal">TIL 191211</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -614,7 +691,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -656,7 +733,26 @@
         
         <article class="media">
             
-            <a href="/2019/12/11/hh/" class="media-left">
+            <a href="/2019/12/14/spqjswo/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="TIL 191214">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T14:23:52.000Z">2019-12-14</time></div>
+                    <a href="/2019/12/14/spqjswo/" class="title has-link-black-ter is-size-6 has-text-weight-normal">TIL 191214</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/11/191211/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="TIL 191211">
                 </p>
@@ -665,7 +761,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T11:40:46.000Z">2019-12-11</time></div>
-                    <a href="/2019/12/11/hh/" class="title has-link-black-ter is-size-6 has-text-weight-normal">TIL 191211</a>
+                    <a href="/2019/12/11/191211/" class="title has-link-black-ter is-size-6 has-text-weight-normal">TIL 191211</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -747,7 +843,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
